@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Keep uploads below Vercel's 4.5 MB request-body limit.
 # Multipart form overhead also counts toward that limit.
-app.config["MAX_CONTENT_LENGTH"] = int(3.5 * 1024 * 1024)
+app.config["MAX_CONTENT_LENGTH"] = int(15 * 1024 * 1024)
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
 
 # Reuse the model session when a serverless instance remains warm.
