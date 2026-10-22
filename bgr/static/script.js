@@ -32,8 +32,8 @@ function chooseFile(file) {
     showError("Please choose a PNG, JPG, or WebP image.");
     return;
   }
-  if (file.size > 15 * 1024 * 1024) {
-    showError("This file is larger than 15 MB. Please choose a smaller image.");
+  if (file.size > 3.9 * 1024 * 1024) {
+    showError("This file is larger than 3.9 MB. Please choose a smaller image.");
     return;
   }
   clearOldUrls();
