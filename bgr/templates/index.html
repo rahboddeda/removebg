@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>ClearCut — Free AI Background Remover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="ClearCut home">
+      <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+      <span>clearcut<span class="brand-dot">.</span></span>
+    </a>
+    <div class="top-note"><span class="status-dot"></span> Free AI background remover</div>
+    <a class="github-link" href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="sparkle">✳</span> YOUR IMAGE. JUST THE SUBJECT.</div>
+      <h1>Make backgrounds<br><span>disappear.</span></h1>
+      <p class="hero-copy">Clean cutouts in seconds. No subscriptions, no watermarks.<br class="desktop-break"> Your images stay on your own server.</p>
+
+      <section class="workspace" aria-label="Background removal tool">
+        <div class="workspace-head">
+          <div>
+            <span class="step-label">01 <span>/ UPLOAD</span></span>
+            <h2>Drop your image here</h2>
+            <p>Portraits, products, pets — bring anything.</p>
+          </div>
+          <div class="file-types"><span>PNG</span><span>JPG</span><span>WEBP</span></div>
+        </div>
+
+        <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose an image or drag one here">
+          <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15.5v3A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-3"/></svg></div>
+          <strong>Choose a file <span>or drag it here</span></strong>
+          <small>Maximum 15 MB · JPG, PNG or WEBP</small>
+          <div id="selectedFile" class="selected-file" hidden></div>
+        </div>
+
+        <div id="errorBox" class="error-box" role="alert" hidden></div>
+        <div class="action-row">
+          <div class="privacy-note"><span class="lock-icon">⌑</span> Private by design <span class="privacy-sub">· processed on your server</span></div>
+          <button id="removeBtn" class="primary-btn" disabled>Remove background <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div id="progressArea" class="progress-area" hidden>
+          <div class="progress-top"><span id="progressText">Warming up the AI…</span><span class="loader"></span></div>
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <p>First run may take a little longer while the AI model loads.</p>
+        </div>
+
+        <section id="resultArea" class="result-area" hidden>
+          <div class="result-heading">
+            <div><span class="step-label">02 <span>/ YOUR RESULT</span></span><h2>Background removed.</h2></div>
+            <button id="resetBtn" class="text-btn">Start over ↺</button>
+          </div>
+          <div class="preview-grid">
+            <div class="preview-card">
+              <div class="preview-label">ORIGINAL</div>
+              <div class="image-stage"><img id="originalPreview" alt="Original uploaded image"></div>
+            </div>
+            <div class="preview-card">
+              <div class="preview-label">TRANSPARENT CUTOUT <span class="check">✓</span></div>
+              <div class="image-stage checkerboard"><img id="resultPreview" alt="Image with background removed"></div>
+            </div>
+          </div>
+          <button id="downloadBtn" class="download-btn">Download transparent PNG <span aria-hidden="true">↓</span></button>
+          <p class="result-note">PNG keeps the transparent background, ready for your designs.</p>
+        </section>
+      </section>
+
+      <div class="trust-row"><span>✳ No API key</span><span>✳ No watermark</span><span>✳ Open-source AI</span></div>
+    </section>
+
+    <section id="how-it-works" class="how-section">
+      <div class="section-kicker">SIMPLE BY DESIGN</div>
+      <h2>Three steps. One clean cutout.</h2>
+      <div class="steps">
+        <article class="step-card"><div class="step-number">01</div><div class="step-icon">↥</div><h3>Upload</h3><p>Choose a photo from your device. No account needed.</p></article>
+        <article class="step-card"><div class="step-number">02</div><div class="step-icon">✳</div><h3>Let AI work</h3><p>The open-source model separates your subject from its background.</p></article>
+        <article class="step-card"><div class="step-number">03</div><div class="step-icon">↓</div><h3>Download</h3><p>Save a transparent PNG and use it wherever you need.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="/"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span>clearcut<span class="brand-dot">.</span></span></a><span>Free to use · Runs on your own backend</span></footer>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
